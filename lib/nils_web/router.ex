@@ -7,7 +7,7 @@ defmodule NilsWeb.Router do
     plug :fetch_live_flash
     plug :put_root_layout, {NilsWeb.LayoutView, :root}
     plug :protect_from_forgery
-    plug :put_secure_browser_headers
+#    plug :put_secure_browser_headers
   end
 
   pipeline :api do
@@ -54,4 +54,19 @@ defmodule NilsWeb.Router do
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
+end
+
+defmodule App.Plug.Restrict.AllowIframe do
+  @moduledoc """
+  Allows affected ressources to be open in iframe.
+  """
+
+  alias Plug.Conn
+
+  def init(opts \\ %{}), do: Enum.into(opts, %{})
+
+  def call(conn, _opts) do
+    Conn.delete_resp_header(conn, "x-frame-options")
+  end
+
 end
