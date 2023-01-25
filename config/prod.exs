@@ -12,7 +12,7 @@ import Config
 config :nils, NilsWeb.Endpoint, cache_static_manifest: "priv/static/cache_manifest.json"
 
 config :nils, NilsWeb.Endpoint,
-       url: [host: "173.255.200.178"],
+       url: [host: System.get_env("PHX_HOST") ],
        render_errors: [view: NilsWeb.ErrorView, accepts: ~w(html json), layout: false],
        pubsub_server: Nils.PubSub,
        live_view: [signing_salt: "JSHMw6fO"]
