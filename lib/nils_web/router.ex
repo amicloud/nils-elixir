@@ -20,6 +20,7 @@ defmodule NilsWeb.Router do
 #    get "/", PageController, :index
     get "/frame", PageController, :frame
     get "/hc", PageController, :health_check
+    get "/", PageController, :seal
   end
 
   # Other scopes may use custom stacks.

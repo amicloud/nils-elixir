@@ -8,4 +8,8 @@ defmodule NilsWeb.PageController do
   def health_check(conn, _params) do
     json(conn, %{status: "ok", time: DateTime.utc_now()})
   end
+
+  def seal(conn, _params) do
+    render(conn, "seal.html")
+  end
 end
